@@ -1,0 +1,16 @@
+language: python
+python:
+- '3.5'
+install:
+- pip3 install -r requirements.txt
+script:
+- pip3 install -r requirements_test.txt
+- flake8 .
+deploy:
+  provider: heroku
+  api_key:
+    secure: QtbNiZ9w7z1m0EPxaVBV6rkHjEUB+ttRb7nsi2I+ZY1rs0fCTKIBqSiAK6mqpUcvC2oR/7/AvIsnv7AxeGN4XN+Gn+yV9kCmPvzozi4c+C7h4gLZJ5ZFJmx605IKa3eHyy38OoRILHTMNmbsbLG0HRT946huICd7LvAdEa9sBMH5JxSu/abl0V+MtfGfmqGKKjm2DtprlkS7/rm8I84NwzESMd4rX02N+qCEJOt5R86kIi6sooiJNLEYb8fdgroTU9er1bgU4d8RXn5k4e22/A5EBGjgiGjMoXRIIpx1wL4rOJ26nS1/lGl4xVvRorqwCcF6cfpvWDa714fP1et1APAqjs1gvaf16HdD3UjTXeihmnMwC4TwQ29F2o4O0AcTjfde0/GyMJvqJzxxe0vanA3hgKYwQuQzuODpey1YBosDB8dfs3Qb/E3FJvUdkK6dCV2NAgICC5fG/yIbptFyrqctESqbM3/Lt0vQocaQDmCmS8AU6Al8TOxwcREgY40kBzcuYWDFuj/dXntCHjusosGCG514w5ODLwzEGDyHTRRQj1Bx2GNTCqh4/9N+tKDJM2werFk/HnptkgaLowmK+K7cp2Dksd+1+raMDOvc7+CW1bt2VgYhbhHGZjN0WDxZKnQZJBdz/lDd5Qj4odG8YpcT50F7XCVS+yVV7bzslP4=
+  app:
+    master: govuk-notify-flask
+  on:
+    repo: LandRegistry/govuk-notify-flask
