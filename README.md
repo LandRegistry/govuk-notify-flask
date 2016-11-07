@@ -1,4 +1,6 @@
 # GOV.UK Notify Flask Example
+[![Build Status](https://travis-ci.org/LandRegistry/govuk-notify-flask.svg?branch=master)](https://travis-ci.org/LandRegistry/govuk-notify-flask)
+
 Example using GOV.UK Notify service through a Flask app
 
 ## Getting Started
