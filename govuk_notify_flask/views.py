@@ -1,6 +1,6 @@
 from govuk_notify_flask import app
 from flask import render_template, flash
-from govuk_notify_flask.forms import EmailForm
+from govuk_notify_flask.forms import PasswordReset
 from notifications_python_client.notifications import NotificationsAPIClient
 from notifications_python_client.errors import HTTPError
 
@@ -9,25 +9,31 @@ notifications_client = NotificationsAPIClient(app.config['NOTIFY_API_KEY'])
 
 @app.route('/', methods=["GET", "POST"])
 def index():
-    email_form = EmailForm()
-    if email_form.validate_on_submit():
+    password_reset_form = PasswordReset()
+    if password_reset_form.validate_on_submit():
         try:
             notifications_client.send_email_notification(
-                email_form.email_address.data,
-                email_form.template.data
+                password_reset_form.email_address.data,
+                '1e6a28c8-3555-4e10-897d-8d19ad058598',
+                personalisation={
+                    'salutation': password_reset_form.salutation.data,
+                    'first_name': password_reset_form.first_name.data,
+                    'surname': password_reset_form.surname.data,
+                    'password': password_reset_form.password.data
+                }
             )
-            flash('Email sent')
+            flash('Email sent to ' + password_reset_form.email_address.data)
         except HTTPError as e:
             raise e
 
         return render_template(
             'index.html',
-            form=email_form
+            form=password_reset_form
         )
 
     return render_template(
         'index.html',
-        form=email_form
+        form=password_reset_form
     )
 
 
