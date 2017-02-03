@@ -1,6 +1,7 @@
 from govuk_notify_flask import app
 from flask import render_template, flash
 from govuk_notify_flask.forms import PasswordReset
+from flask_wtf.csrf import CSRFError
 from notifications_python_client.notifications import NotificationsAPIClient
 from notifications_python_client.errors import HTTPError
 
@@ -35,6 +36,11 @@ def index():
         'index.html',
         form=password_reset_form
     )
+
+
+@app.errorhandler(CSRFError)
+def handle_csrf_error(error):
+    return render_template('error.html', error=error), 400
 
 
 @app.errorhandler(400)
