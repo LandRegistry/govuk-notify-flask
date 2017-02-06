@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/LandRegistry/govuk-notify-flask.svg?branch=master)](https://travis-ci.org/LandRegistry/govuk-notify-flask)
 [![Requirements Status](https://requires.io/github/LandRegistry/govuk-notify-flask/requirements.svg?branch=master)](https://requires.io/github/LandRegistry/govuk-notify-flask/requirements/?branch=master)
 
-Example using GOV.UK Notify service through a Flask app
+Example using GOV.UK Notify service through a Flask app using the [notifications python client](https://github.com/alphagov/notifications-python-client).
 
 ## Getting Started
 
