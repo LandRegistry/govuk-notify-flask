@@ -13,17 +13,18 @@ def index():
     password_reset_form = PasswordReset()
     if password_reset_form.validate_on_submit():
         try:
-            notifications_client.send_email_notification(
-                password_reset_form.email_address.data,
-                '1e6a28c8-3555-4e10-897d-8d19ad058598',
+            response = notifications_client.send_email_notification(
+                email_address=password_reset_form.email_address.data,
+                template_id='1e6a28c8-3555-4e10-897d-8d19ad058598',
                 personalisation={
                     'salutation': password_reset_form.salutation.data,
                     'first_name': password_reset_form.first_name.data,
                     'surname': password_reset_form.surname.data,
                     'password': password_reset_form.password.data
-                }
+                },
+                reference=None
             )
-            flash('Email sent to ' + password_reset_form.email_address.data)
+            flash("<strong>Notification Sent!</strong><br/>ID: " + response['id'])
         except HTTPError as e:
             raise e
 
