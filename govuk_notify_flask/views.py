@@ -1,3 +1,4 @@
+import json
 from govuk_notify_flask import app
 from flask import render_template, flash
 from govuk_notify_flask.forms import PasswordReset
@@ -17,20 +18,21 @@ def index():
                 email_address=password_reset_form.email_address.data,
                 template_id='1e6a28c8-3555-4e10-897d-8d19ad058598',
                 personalisation={
-                    'salutation': password_reset_form.salutation.data,
-                    'first_name': password_reset_form.first_name.data,
+                    'title': password_reset_form.title.data,
+                    'forename': password_reset_form.forename.data,
                     'surname': password_reset_form.surname.data,
                     'password': password_reset_form.password.data
                 },
                 reference=None
             )
-            flash("<strong>Notification Sent!</strong><br/>ID: " + response['id'])
+            flash("Notification ID: " + response['id'])
         except HTTPError as e:
             raise e
 
         return render_template(
             'index.html',
-            form=password_reset_form
+            form=password_reset_form,
+            response=json.dumps(response)
         )
 
     return render_template(

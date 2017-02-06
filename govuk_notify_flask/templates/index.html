@@ -6,8 +6,21 @@
       <h1>GOV.UK Notify <small>Flask Example</small></h1>
     </div>
     {% include 'includes/flash.html' %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Template:</h2>
     {% include 'includes/form_error.html' %}
     {% include 'includes/form.html' %}
+    <hr>
+  </div>
+  <div class="col-md-6">
+    {% if response %}
+    <h2>Response:</h2>
+    <code>{{response|safe}}</code>
+    <hr>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
