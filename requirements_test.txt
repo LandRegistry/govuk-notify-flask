@@ -1,4 +1,4 @@
-flake8==3.2.1
+flake8==3.3.0
 hacking==0.13.0
 mccabe==0.6.1
 pbr==1.10.0
