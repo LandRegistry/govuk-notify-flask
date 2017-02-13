@@ -19,13 +19,13 @@ def index():
                 template_id='1e6a28c8-3555-4e10-897d-8d19ad058598',
                 personalisation={
                     'title': password_reset_form.title.data,
-                    'forename': password_reset_form.forename.data,
-                    'surname': password_reset_form.surname.data,
+                    'first_name': password_reset_form.first_name.data,
+                    'last_name': password_reset_form.last_name.data,
                     'password': password_reset_form.password.data
                 },
                 reference=None
             )
-            flash("Notification ID: " + response['id'])
+            flash("Notification ID: " + "<a href='" + response['uri'] + "'>" + response['id'] + "</a>")
         except HTTPError as e:
             raise e
 
