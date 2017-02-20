@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, PasswordField
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms import StringField, SelectField
+from wtforms.validators import DataRequired, Email
 
 TITLES = [('', 'Please select a title'),
           ('Mr', 'Mr'),
@@ -14,6 +14,4 @@ class PasswordReset(FlaskForm):
     title = SelectField('Title', choices=TITLES, validators=[DataRequired()])
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
-    password = PasswordField('New Password', validators=[DataRequired(),
-                             EqualTo('confirm', message='Passwords must match')])
-    confirm = PasswordField('Confirm Password', validators=[DataRequired()])
+    token = StringField('Token', validators=[DataRequired()])

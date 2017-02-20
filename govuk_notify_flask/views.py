@@ -21,7 +21,7 @@ def index():
                     'title': password_reset_form.title.data,
                     'first_name': password_reset_form.first_name.data,
                     'last_name': password_reset_form.last_name.data,
-                    'password': password_reset_form.password.data
+                    'token': password_reset_form.token.data
                 },
                 reference=None
             )
